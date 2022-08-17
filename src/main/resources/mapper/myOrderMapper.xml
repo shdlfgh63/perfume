@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.perfume.exam.mapper.MyOrderMapper">
+
+<!-- 주문 상품 정보 -->
+<select id="getPerfumeInfo" resultType="com.perfume.exam.vo.OrderPageItemDTO">
+
+	select product_id, name, price, image from product
+	where product_id = #{product_id}
+	
+</select>
+
+<!-- 주문 처리 정보 -->
+<select id="getOrderInfo" resultType="com.perfume.exam.vo.OrderItemDTO">
+	select product_id, price 
+	from product 
+	where product_id = #{product_id}
+</select>
+
+<!-- 주문 테이블 등록 -->
+<insert id="enrollOrder">
+	insert into MY_ORDER(order_id, addressee, member_id, memberaddr1, memberaddr2, 
+	deli_cost, order_date)
+	values(#{order_id}, #{addressee}, #{member_id}, #{memberaddr1}, #{memberaddr2}, #{deli_cost}, 
+	sysdate)
+</insert>
+
+<!-- 주문 item 테이블 등록 -->
+<insert id="enrollOrderItem">
+	insert into MY_ORDERITEM(order_id, product_id, product_count, price) 
+	values(#{order_id}, #{product_id}, #{product_count}, #{price})
+</insert>
+
+
+
+</mapper>
+
+
+

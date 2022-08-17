@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.perfume.exam.service.dao.MyOrderDAO">
+
+
+
+<!-- 주문목록 조회 -->
+
+<!-- 
+<select id="selectOrderList" resultType="myOrderVO">
+	<![CDATA[
+		SELECT 
+		ORDER_ID AS orderId
+	,	ORDER_DATE AS orderDate
+	, 	NAME AS name
+	, 	PRODUCT_COUNT AS productCount 
+	, 	TOTAL_PRICE AS totalPrice
+	,	ID			AS	id
+	FROM MY_ORDER
+	where ID = #{id}
+	]]>
+
+</select>
+ -->
+
+ 
+<!--  
+ 
+<delete id="deleteOrder" parameterType="int" >
+	<![CDATA[
+		DELETE FROM MY_ORDER where order_id = #{order_id}
+	]]>
+
+</delete>
+ -->
+	
+	
+
+</mapper>

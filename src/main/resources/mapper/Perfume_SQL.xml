@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.perfume.exam.service.dao.PerfumeDAO">
+
+
+<!-- 전체 조회 -->
+ <select id="selectPerfumeList" resultType="perfumeVO">
+	<![CDATA[
+		select * from PRODUCT WHERE BRAND is NOT NULL
+		
+		]]>
+ </select>
+ 
+ <!--  goods 조회 -->
+ <select id="selectGoodsList" resultType="perfumeVO">
+	<![CDATA[
+		select * from PRODUCT WHERE BRAND is NULL
+		
+		]]>
+ </select>
+ <!-- 향수 카테고리 -->
+ <select id="selectCategoryList" resultType="perfumeVO" parameterType = "String">
+   <![CDATA[
+      select * from PRODUCT where SOURCE1 = #{param} or SOURCE2 = #{param} or SOURCE3 = #{param}
+      ]]>
+ </select>
+ <!-- 향수명으로 조회 -->
+ <select id="selectName" resultType="perfumeVO" parameterType = "String">
+   <![CDATA[
+      select * from PRODUCT where NAME =#{param}
+      ]]>
+ </select>
+ 
+ <!-- 리뷰를 위한 향수명, 제품번호 조회 -->  
+ <select id="getProductIdName" resultType="perfumeVO">
+   <![CDATA[
+      select product_id, name from product
+      where  product_id = #{product_id}
+      ]]>
+ </select> 
+ 
+ <!-- 상세페이지 하단에 상품리뷰 목록 조회 -->
+  <select id="selectReviewList" resultType="com.perfume.exam.vo.ReviewVO" parameterType = "String">
+   <![CDATA[
+      select * from review where NAME =#{param}
+      ]]>
+ </select>
+ 
+ 
+ 
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.perfume.exam.service.dao.MyReviewDAO">
+
+<!-- 리뷰목록 조회 -->
+<select id="selectReviewList" resultType="com.perfume.exam.vo.ReviewVO">
+	<![CDATA[
+		SELECT * FROM REVIEW 
+		where writerid = #{id}
+	]]>
+</select>
+
+<delete id="deleteReview" parameterType="int">
+	<![CDATA[
+		DELETE FROM REVIEW WHERE reviewid = #{reviewid} 
+	]]>	
+</delete>
+
+
+
+<!-- 리뷰할 제품아이디, 제품이름 조회 -->
+<!-- 
+<select id="getProductIdName" resultType="myReviewVO">
+	<![CDATA[
+		SELECT PRODICT_ID, NAME from MY_REVIEW
+		where PRODUCT_ID = #{productId}
+	]]>
+</select>
+ -->
+
+<!-- 
+<insert id="enrollReview">
+
+	<![CDATA[
+		INSERT INTO MY_REVIEW (NAME, MY_REVIEW_CONTENT) values (#{name}, #{myReviewContent})
+	]]>
+
+</insert>
+ -->
+
+
+</mapper>
+

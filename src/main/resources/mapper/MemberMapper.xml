@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.perfume.exam.mapper.MemberMapper">
+  
+	<insert id="memberJoin">
+  		insert into member 
+  		values
+  		(#{id}, #{password}, #{user_name}, #{email}, #{mobile}, #{zipcode}, #{address1}, #{address2}, 0, sysdate)
+  	</insert>
+	
+	<!-- 아이디 중복검사 -->
+  	<select id="idCheck" resultType="int">
+  		select count(*) from member where id = #{id}
+  	</select>
+  	
+  	  <!-- 로그인 -->
+      <select id="memberLogin" resultType="com.perfume.exam.model.MemberVO">  
+         select id, password, user_name, email, mobile, zipcode, address1, address2, adminck, regDate from member where id = #{id} and password = #{password}
+      </select>
+      
+     <!-- 아이디 찾기 -->
+	<select id="find_id" parameterType="String" resultType="String">
+		select id from member where email = #{email}
+	</select>
+
+	<!-- 회원정보 수정(마이페이지) -->
+	<update id="memberEdit">
+		update member
+		SET
+			password = #{password},
+			user_name = #{user_name},
+			email = #{email, jdbcType=VARCHAR}	
+		WHERE
+			id = #{id}								
+	</update> 		
+			
+	<!-- 회원정보 상세 조회(마이페이지) -->
+	<select id="memberInfo" resultType="com.perfume.exam.model.MemberVO">
+		select * from member where id = #{id}
+	</select> 
+	
+	
+	<!-- (추가) 주문회원 정보 -->
+	
+	<select id="getMemberInfo"  resultType="com.perfume.exam.model.MemberVO">
+	
+		select id, user_name, email, address1, address2
+		from member
+		where id = #{id}
+	
+	</select>
+	
+	
+	
+
+
+  </mapper>

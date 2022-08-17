@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.perfume.exam.service.dao.AdminDAO">
+
+	<!--=================================List Query=================================-->
+	<!--=================================List Query=================================-->
+	<select id="getNoticeList" resultType="boardVO">
+		<![CDATA[
+			SELECT * FROM board WHERE category = 'notice' ORDER BY id DESC
+		]]>
+	</select>
+ 
+	<select id="getFAQList" resultType="boardVO">
+		<![CDATA[
+			SELECT * FROM board WHERE category = 'faq' ORDER BY id DESC
+		]]>
+	</select>
+	
+	<select id="getEventList" resultType="eventVO">
+		<![CDATA[
+			SELECT * FROM event WHERE id != 9999 ORDER BY id DESC
+		]]>
+	</select>
+	
+	<select id="getBenefit" resultType="string">
+		<![CDATA[
+ 			SELECT image FROM event WHERE id = 9999
+		]]>		
+	</select>
+	
+	<select id="getWinnerList" resultType="boardVO">
+		<![CDATA[
+			SELECT * FROM board WHERE category = 'winner' ORDER BY id DESC
+		]]>
+	</select>
+	
+	<select id="getProductList" resultType="perfumeVO">
+		<![CDATA[
+			SELECT * FROM product WHERE brand != 'null'
+		]]>	
+	</select>
+	
+	
+	
+	<!--=================================Board Query=================================-->
+	<!--=================================Board Query=================================-->
+	<insert id="boardInsert" parameterType="boardVO">
+		<![CDATA[
+			INSERT INTO board VALUES (board_seq.nextval, 0, #{title}, #{content}, sysdate, #{category})
+		]]>
+	</insert>
+	
+	<update id="boardUpdate" parameterType="boardVO">
+		<![CDATA[
+			UPDATE board SET title = #{title}, content = #{content} WHERE id = ${id}
+		]]>
+	</update>
+	
+	
+	
+	<!--=================================Benefit Query=================================-->
+	<!--=================================Benefit Query=================================-->
+	<delete id="boardDelete" parameterType="boardVO">
+		<![CDATA[
+			DELETE FROM board WHERE id = ${id}
+		]]>
+	</delete>
+	
+	
+	<update id="beneSubmit" parameterType="eventVO">
+		<![CDATA[
+			UPDATE event SET image = #{fileName} WHERE id = 9999
+		]]>
+	</update>	
+	
+	
+	
+	<!--=================================Event Query=================================-->
+	<!--=================================Event Query=================================-->
+	<update id="eventUpdateMax" parameterType="eventVO">
+		<![CDATA[
+			UPDATE event SET 
+				title = #{title}, 
+				startDate = #{startdate}, 
+				enddate = #{enddate}, 
+				thumbnail = #{thumbnail}, 
+				image = #{image} 
+			WHERE id = ${id}
+		]]>
+	</update>
+	
+	<update id="eventUpdateThn" parameterType="eventVO">
+		<![CDATA[
+			UPDATE event SET 
+				title = #{title}, 
+				startDate = #{startdate}, 
+				enddate = #{enddate}, 
+				thumbnail = #{thumbnail}
+			WHERE id = ${id}
+		]]>
+	</update>
+	
+	<update id="eventUpdateImg" parameterType="eventVO">
+		<![CDATA[
+			UPDATE event SET 
+				title = #{title}, 
+				startDate = #{startdate}, 
+				enddate = #{enddate}, 
+				image = #{image} 
+			WHERE id = ${id}
+		]]>
+	</update>
+	
+	<update id="eventUpdateMin" parameterType="eventVO">
+		<![CDATA[
+			UPDATE event SET 
+				title = #{title}, 
+				startDate = #{startdate}, 
+				enddate = #{enddate}
+			WHERE id = ${id}
+		]]>
+	</update>			
+	
+	<insert id="eventInsert" parameterType="eventVO">
+		<![CDATA[
+			INSERT INTO event 
+			VALUES (
+						board_seq.nextval, 
+						#{startdate}, 
+						#{enddate}, 
+						#{title}, 
+						sysdate, 
+						0, 
+						0,
+						#{thumbnail},
+						#{image}
+				  	)
+		]]>
+	</insert>
+	
+	<delete id="eventDelete" parameterType="eventVO">
+		<![CDATA[
+			DELETE FROM event WHERE id = ${id}
+		]]>
+	</delete>	
+	
+	
+	
+	<!--=================================Product Query=================================-->
+	<!--=================================Product Query=================================-->
+	<insert id="productInsert" parameterType="perfumeVO">
+		<![CDATA[
+			INSERT INTO product 
+			VALUES (
+						product_seq.nextval, 
+						#{name}, 
+						#{brand}, 
+						#{price},
+						#{source1},
+						#{source2},
+						#{source3},
+						#{image},
+						#{price2},
+						#{price3}
+				  	)
+		]]>
+	</insert>	
+	
+	<delete id="productDelete" parameterType="perfumeVO">
+		<![CDATA[
+			DELETE FROM product WHERE product_id = ${id}
+		]]>
+	</delete>	
+
+	<update id="productUpdateMax" parameterType="perfumeVO">
+		<![CDATA[
+			UPDATE product SET 
+				name = #{name},
+				brand = #{brand}, 
+				source1 = #{source1}, 
+				source2 = #{source2}, 
+				source3 = #{source3},
+				price = #{price},
+				price2 = #{price2},
+				price3 = #{price3}, 
+				image = #{image} 
+			WHERE product_id = ${productId}
+		]]>
+	</update>	
+	
+	<update id="productUpdateMin" parameterType="perfumeVO">
+		<![CDATA[
+			UPDATE product SET 
+				name = #{name},
+				brand = #{brand}, 
+				source1 = #{source1}, 
+				source2 = #{source2}, 
+				source3 = #{source3},
+				price = #{price},
+				price2 = #{price2},
+				price3 = #{price3} 
+			WHERE product_id = ${productId}
+		]]>
+	</update>
+	
+	
+	
+	
+</mapper> 
+
+
+
+
+
+
+
+

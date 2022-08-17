@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.perfume.exam.service.dao.CustomerDAO">
+
+	<select id="getNoticeList" resultType="boardVO">
+		<![CDATA[
+			SELECT * FROM board WHERE category = 'notice'	
+		]]>
+	</select>
+ 
+	<select id="getFAQList" resultType="boardVO">
+		<![CDATA[
+ 			SELECT * FROM board WHERE category = 'faq'
+		]]>
+	</select>
+	
+	<select id="getBenefit" resultType="string">
+		<![CDATA[
+ 			SELECT image FROM event WHERE id = 9999
+		]]>	
+	</select>
+ 
+</mapper> 
+

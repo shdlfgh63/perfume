@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.perfume.exam.service.dao.CartDAO">
+  	
+  	
+	<!-- 카트 추가 -->
+	
+	<insert id="newAddCart" parameterType="com.perfume.exam.vo.CartVO">
+	<![CDATA[
+		insert into cart(cart_id,product_id,id,product_count,state)
+		values((select NVL( MAX(cart_id) , 0) + 1 from cart),(select product_id from product where name = #{name} ),#{id},1,#{image})
+		]]>
+		
+		
+	</insert>
+	<!--<![CDATA[ ]]> -->
+	
+	<!-- 카트 삭제 -->
+	<delete id="deleteCart">
+	<![CDATA[	
+		delete from cart where cart_id = #{cart_id}
+	]]>
+	</delete>
+	
+	
+	
+	
+	<!-- 카트 목록 -->
+	<select id="getCart" resultType="com.perfume.exam.vo.CartVO">
+	  <!--
+	  select c.cart_id, c.id, c.product_id, c.product_count, p.name, p.price
+		from cart c left outer join product p on c.product_id = p.product_id
+		where id = #{id}	  -->
+        
+      select cart_id
+      		, p.product_id
+      		, c.id
+      		, name
+      		, image
+      		, product_count      		
+      		, price
+      		, (price*product_count) totalPrice
+      		, c.state     
+	      from member m, cart c, product p       
+	      where 
+	      1=1
+	      and
+	      m.id=c.id 
+	      and 
+	      c.product_id=p.product_id 
+	      and m.id=#{id} 
+	      order by cart_id 
+      
+      
+    
+	</select>
+	
+	<!-- 카트 확인 -->
+	<select id="checkCart" resultType="com.perfume.exam.vo.CartVO">
+	<!--<![CDATA[select * from cart 
+		where id = #{id} and product_id = #{product_id} ]]> -->
+		
+	
+	</select>
+	
+	<update id="cartModify">
+	
+		update cart set product_count=#{product_count} where cart_id = #{cart_id}
+	
+	</update>
+	<select id="loadPrice" parameterType="hashMap" resultType="perfumeVO">
+	select
+          <if test="state == 'price'">
+           price as price
+          </if>
+          <if test="state == 'price2'">
+           price2 as price
+          </if>
+          <if test="state == 'price3'">
+           price3 as price
+          </if>
+          from product where product_id = #{product_id}
+	
+	</select>
+  </mapper>

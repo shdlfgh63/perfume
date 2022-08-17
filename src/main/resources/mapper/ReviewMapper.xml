@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.perfume.exam.service.dao.ReviewDAO">
+		
+	<!-- 상품리뷰 등록 -->	
+	<insert id="enrollReview">
+		
+		insert into review(reviewId, productId, writerId, regDate, content, rating, name)
+		values (seq_review.nextval, #{productId}, #{writerId}, sysdate, #{content}, #{rating}, #{name})
+		
+	</insert>	
+	
+	<!-- 상세페이지 하단 리뷰목록 -->
+	
+	
+	
+	<!-- 리뷰 페이징 -->
+	<select id="getReviewList" resultType="com.perfume.exam.vo.ReviewVO">
+	
+  		<![CDATA[
+		select * from(  		
+			select rownum as rn, reviewId, productId, writerId, content, rating, regDate
+			from REVIEW
+			where rownum <= #{pageNum} * #{amount}  and productId = #{productId}	
+			order by regDate desc  	
+  			)
+  		where rn > (#{pageNum} -1) * #{amount}
+  		]]>				
+
+	</select>
+
+	<!-- 총 리뷰갯수 -->
+  	<select id="getReviewTotal" resultType="int">
+  	
+  		select count(*)
+  		from REVIEW
+  		where productId = #{productId}
+  	
+  	</select>
+	
+	
+</mapper>  
+  
