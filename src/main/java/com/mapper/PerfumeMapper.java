@@ -4,8 +4,9 @@ import java.util.List;
 
 import com.model.PerfumeVO;
 import com.model.ReviewVO;
+import org.apache.ibatis.annotations.Mapper;
 
-
+@Mapper
 public interface PerfumeMapper {
 	List<PerfumeVO> selectPerfumeList() throws Exception;
 	List<PerfumeVO> selectGoodsList() throws Exception;

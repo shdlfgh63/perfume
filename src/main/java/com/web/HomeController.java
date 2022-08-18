@@ -22,24 +22,25 @@ public class HomeController {
 	@Autowired
 	private PerfumeService perfumeservice;
 
+
 	@RequestMapping("home")
 	public String home(Model model,HttpServletRequest req,HttpServletResponse res) throws Exception {
 				
 		List<PerfumeVO> list = perfumeservice.selectPerfumeList();
 		model.addAttribute("list", list);
 		
-			return "root.perfume.home";
+			return "home";
 		}
 	
-	@RequestMapping("about")
+	/*@RequestMapping("about")
 	public String about(Model model,HttpServletRequest req,HttpServletResponse res) throws Exception {
 		
 		List<PerfumeVO> list = perfumeservice.selectPerfumeList();
 		model.addAttribute("list", list);
 		
-			return "root.perfume.about";
+			return "about";
 		}
-		
+	*/
 		
 	
 	}

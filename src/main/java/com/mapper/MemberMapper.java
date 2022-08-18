@@ -1,8 +1,9 @@
 package com.mapper;
 
 import com.model.MemberVO;
+import org.apache.ibatis.annotations.Mapper;
 
-
+@Mapper
 public interface MemberMapper {
 	
 	//회원가입

@@ -2,8 +2,9 @@ package com.mapper;
 
 
 import com.model.ReviewVO;
+import org.apache.ibatis.annotations.Mapper;
 
-
+@Mapper
 public interface ReviewMapper {
 
 	// 상품리뷰 등록

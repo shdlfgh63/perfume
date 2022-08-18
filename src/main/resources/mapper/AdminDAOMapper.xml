@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.perfume.exam.service.dao.AdminDAO">
+<mapper namespace="com.mapper.AdminMapper">
 
 	<!--=================================List Query=================================-->
 	<!--=================================List Query=================================-->
-	<select id="getNoticeList" resultType="boardVO">
+	<select id="getNoticeList" resultType="BoardVO">
 		<![CDATA[
 			SELECT * FROM board WHERE category = 'notice' ORDER BY id DESC
 		]]>
 	</select>
  
-	<select id="getFAQList" resultType="boardVO">
+	<select id="getFAQList" resultType="BoardVO">
 		<![CDATA[
 			SELECT * FROM board WHERE category = 'faq' ORDER BY id DESC
 		]]>
 	</select>
 	
-	<select id="getEventList" resultType="eventVO">
+	<select id="getEventList" resultType="EventVO">
 		<![CDATA[
 			SELECT * FROM event WHERE id != 9999 ORDER BY id DESC
 		]]>
@@ -29,46 +29,46 @@
 		]]>		
 	</select>
 	
-	<select id="getWinnerList" resultType="boardVO">
+	<select id="getWinnerList" resultType="BoardVO">
 		<![CDATA[
 			SELECT * FROM board WHERE category = 'winner' ORDER BY id DESC
 		]]>
 	</select>
-	
-	<select id="getProductList" resultType="perfumeVO">
+
+	<select id="getProductList" resultType="PerfumeVO">
 		<![CDATA[
 			SELECT * FROM product WHERE brand != 'null'
-		]]>	
+		]]>
 	</select>
-	
-	
-	
+
+
+
 	<!--=================================Board Query=================================-->
 	<!--=================================Board Query=================================-->
-	<insert id="boardInsert" parameterType="boardVO">
+	<insert id="boardInsert" parameterType="BoardVO">
 		<![CDATA[
 			INSERT INTO board VALUES (board_seq.nextval, 0, #{title}, #{content}, sysdate, #{category})
 		]]>
 	</insert>
-	
-	<update id="boardUpdate" parameterType="boardVO">
+
+	<update id="boardUpdate" parameterType="BoardVO">
 		<![CDATA[
 			UPDATE board SET title = #{title}, content = #{content} WHERE id = ${id}
 		]]>
 	</update>
-	
-	
-	
+
+
+
 	<!--=================================Benefit Query=================================-->
 	<!--=================================Benefit Query=================================-->
-	<delete id="boardDelete" parameterType="boardVO">
+	<delete id="boardDelete" parameterType="BoardVO">
 		<![CDATA[
 			DELETE FROM board WHERE id = ${id}
 		]]>
 	</delete>
 	
 	
-	<update id="beneSubmit" parameterType="eventVO">
+	<update id="beneSubmit" parameterType="EventVO">
 		<![CDATA[
 			UPDATE event SET image = #{fileName} WHERE id = 9999
 		]]>
@@ -78,7 +78,7 @@
 	
 	<!--=================================Event Query=================================-->
 	<!--=================================Event Query=================================-->
-	<update id="eventUpdateMax" parameterType="eventVO">
+	<update id="eventUpdateMax" parameterType="EventVO">
 		<![CDATA[
 			UPDATE event SET 
 				title = #{title}, 
@@ -90,7 +90,7 @@
 		]]>
 	</update>
 	
-	<update id="eventUpdateThn" parameterType="eventVO">
+	<update id="eventUpdateThn" parameterType="EventVO">
 		<![CDATA[
 			UPDATE event SET 
 				title = #{title}, 
@@ -101,7 +101,7 @@
 		]]>
 	</update>
 	
-	<update id="eventUpdateImg" parameterType="eventVO">
+	<update id="eventUpdateImg" parameterType="EventVO">
 		<![CDATA[
 			UPDATE event SET 
 				title = #{title}, 
@@ -112,7 +112,7 @@
 		]]>
 	</update>
 	
-	<update id="eventUpdateMin" parameterType="eventVO">
+	<update id="eventUpdateMin" parameterType="EventVO">
 		<![CDATA[
 			UPDATE event SET 
 				title = #{title}, 
@@ -122,7 +122,7 @@
 		]]>
 	</update>			
 	
-	<insert id="eventInsert" parameterType="eventVO">
+	<insert id="eventInsert" parameterType="EventVO">
 		<![CDATA[
 			INSERT INTO event 
 			VALUES (
@@ -139,7 +139,7 @@
 		]]>
 	</insert>
 	
-	<delete id="eventDelete" parameterType="eventVO">
+	<delete id="eventDelete" parameterType="EventVO">
 		<![CDATA[
 			DELETE FROM event WHERE id = ${id}
 		]]>
@@ -149,7 +149,7 @@
 	
 	<!--=================================Product Query=================================-->
 	<!--=================================Product Query=================================-->
-	<insert id="productInsert" parameterType="perfumeVO">
+	<insert id="productInsert" parameterType="PerfumeVO">
 		<![CDATA[
 			INSERT INTO product 
 			VALUES (
@@ -167,13 +167,13 @@
 		]]>
 	</insert>	
 	
-	<delete id="productDelete" parameterType="perfumeVO">
+	<delete id="productDelete" parameterType="PerfumeVO">
 		<![CDATA[
 			DELETE FROM product WHERE product_id = ${id}
 		]]>
 	</delete>	
 
-	<update id="productUpdateMax" parameterType="perfumeVO">
+	<update id="productUpdateMax" parameterType="PerfumeVO">
 		<![CDATA[
 			UPDATE product SET 
 				name = #{name},
@@ -189,7 +189,7 @@
 		]]>
 	</update>	
 	
-	<update id="productUpdateMin" parameterType="perfumeVO">
+	<update id="productUpdateMin" parameterType="PerfumeVO">
 		<![CDATA[
 			UPDATE product SET 
 				name = #{name},

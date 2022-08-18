@@ -4,7 +4,9 @@ import java.util.List;
 
 
 import com.model.MyWishVO;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface MyWishMapper {
 	
 	// 관심상품 목록 뷰에 표시

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.perfume.exam.mapper.MemberMapper">
+  <mapper namespace="com.mapper.MemberMapper">
   
 	<insert id="memberJoin">
   		insert into member 
@@ -16,7 +16,7 @@
   	</select>
   	
   	  <!-- 로그인 -->
-      <select id="memberLogin" resultType="com.perfume.exam.model.MemberVO">  
+      <select id="memberLogin" resultType="MemberVO">
          select id, password, user_name, email, mobile, zipcode, address1, address2, adminck, regDate from member where id = #{id} and password = #{password}
       </select>
       
@@ -37,14 +37,14 @@
 	</update> 		
 			
 	<!-- 회원정보 상세 조회(마이페이지) -->
-	<select id="memberInfo" resultType="com.perfume.exam.model.MemberVO">
+	<select id="memberInfo" resultType="MemberVO">
 		select * from member where id = #{id}
 	</select> 
 	
 	
 	<!-- (추가) 주문회원 정보 -->
 	
-	<select id="getMemberInfo"  resultType="com.perfume.exam.model.MemberVO">
+	<select id="getMemberInfo"  resultType="MemberVO">
 	
 		select id, user_name, email, address1, address2
 		from member

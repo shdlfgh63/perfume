@@ -7,8 +7,9 @@ import com.model.MyOrderVO;
 import com.model.OrderDTO;
 import com.model.OrderItemDTO;
 import com.model.OrderPageItemDTO;
+import org.apache.ibatis.annotations.Mapper;
 
-
+@Mapper
 public interface MyOrderMapper {
 	
 	 // 주문내역 목록 (로그인 후 이용가능)

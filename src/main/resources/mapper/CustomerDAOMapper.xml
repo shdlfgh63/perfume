@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.perfume.exam.service.dao.CustomerDAO">
+<mapper namespace="com.mapper.CustomerMapper">
 
-	<select id="getNoticeList" resultType="boardVO">
+	<select id="getNoticeList" resultType="BoardVO">
 		<![CDATA[
 			SELECT * FROM board WHERE category = 'notice'	
 		]]>
 	</select>
  
-	<select id="getFAQList" resultType="boardVO">
+	<select id="getFAQList" resultType="BoardVO">
 		<![CDATA[
  			SELECT * FROM board WHERE category = 'faq'
 		]]>

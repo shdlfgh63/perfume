@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.perfume.exam.service.dao.ReviewDAO">
+<mapper namespace="com.mapper.ReviewMapper">
 		
 	<!-- 상품리뷰 등록 -->	
 	<insert id="enrollReview">
@@ -18,7 +18,7 @@
 	
 	
 	<!-- 리뷰 페이징 -->
-	<select id="getReviewList" resultType="com.perfume.exam.vo.ReviewVO">
+	<select id="getReviewList" resultType="ReviewVO">
 	
   		<![CDATA[
 		select * from(  		

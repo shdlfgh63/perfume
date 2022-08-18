@@ -1,7 +1,9 @@
 package com.model;
 
-import java.sql.Date;
+import lombok.Data;
+import org.springframework.context.annotation.Bean;
 
+import java.sql.Date;
 
 public class MemberVO {
 
