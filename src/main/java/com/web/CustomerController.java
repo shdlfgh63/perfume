@@ -28,6 +28,6 @@ public class CustomerController {
 		model.addAttribute("faqList", faqList);
 		model.addAttribute("benefit", benefit);
 		
-		return "root.customer.notice";
+		return "customer/notice";
 	}	
 }

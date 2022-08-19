@@ -3,7 +3,6 @@ package com.web;
 import java.util.List;
 
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,18 +28,18 @@ public class HomeController {
 		List<PerfumeVO> list = perfumeservice.selectPerfumeList();
 		model.addAttribute("list", list);
 		
-			return "home";
+			return "perfume/home";
 		}
 	
-	/*@RequestMapping("about")
+	@RequestMapping("about")
 	public String about(Model model,HttpServletRequest req,HttpServletResponse res) throws Exception {
 		
 		List<PerfumeVO> list = perfumeservice.selectPerfumeList();
 		model.addAttribute("list", list);
 		
-			return "about";
+			return "perfume/about";
 		}
-	*/
+
 		
 	
 	}

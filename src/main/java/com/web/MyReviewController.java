@@ -36,7 +36,7 @@ public class MyReviewController {
 		List<ReviewVO> reviews = myReviewService.selectReviewList(id);
 		model.addAttribute("reviews", reviews);
 		
-		return "root.mypage.myreview";
+		return "mypage/myreview";
 		
 	}
 	

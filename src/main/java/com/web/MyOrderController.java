@@ -28,7 +28,7 @@ public class MyOrderController {
 		
 		model.addAttribute("order", order);
 		
-		return "root.mypage.orderlist";
+		return "mypage/orderlist";
 	}
 
 	// 주문내역 삭제(반품처리)

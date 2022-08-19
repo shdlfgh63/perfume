@@ -51,7 +51,7 @@ public class AdminController {
 		model.addAttribute("faqList", faqList);
 		model.addAttribute("benefit", benefit);
 
-		return "admin.board";
+		return "admin/board";
 	}
 
 	@PostMapping("board")
@@ -143,7 +143,7 @@ public class AdminController {
 		model.addAttribute("winnerList", winnerList);
 		model.addAttribute("eventList", eventList);
 
-		return "admin.event";
+		return "admin/event";
 	}
 	
 	@PostMapping("event")
@@ -275,7 +275,7 @@ public class AdminController {
 		
 		model.addAttribute("productList", productList);
 		
-		return "admin.product";
+		return "admin/product";
 	}
 	
 	@PostMapping("product")

@@ -48,7 +48,7 @@ public class PerfumeServiceImpl implements PerfumeService {
 		perfumeDAO.addProduct(vo);
 		
 	}
-	
+	/*
 	@Override
 	public PerfumeVO getProductIdName(int product_id) {
 		
@@ -60,7 +60,7 @@ public class PerfumeServiceImpl implements PerfumeService {
 		
 		return perfumeDAO.selectReviewList(param);
 	}
-
+*/
 
 }
 

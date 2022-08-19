@@ -32,7 +32,7 @@ public class MyWishController {
 		
 		model.addAttribute("wishes", wishes);
 		
-		return "root.mypage.wishlist";
+		return "mypage/wishlist";
 		
 	}	
 	

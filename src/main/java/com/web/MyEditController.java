@@ -34,7 +34,7 @@ public class MyEditController {
 		// 로그인한 회원의 상세정보 조회
 		model.addAttribute("info", myeditservice.memberInfo(id));
 		
-		return "root.mypage.myedit";
+		return "mypage/myedit";
 	}
 
 	// 회원 정보 수정 처리

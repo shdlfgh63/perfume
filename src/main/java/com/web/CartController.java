@@ -2,12 +2,10 @@ package com.web;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.model.CartVO;
@@ -17,7 +15,6 @@ import com.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -114,7 +111,7 @@ public class CartController {
 		
 		model.addAttribute("cartInfo", cartService.getCart(id));
 		System.out.println("주문페이지 진입");
-		return "/order";
+		return "shop/order";
 	}
 	
 

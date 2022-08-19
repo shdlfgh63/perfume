@@ -36,6 +36,9 @@ dependencies {
 	implementation 'javax.servlet:jstl'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+	//tiles 관련 라이브러리
+	implementation group: 'org.apache.tiles', name: 'tiles-jsp', version: '3.0.5'
+
 }
 
 tasks.named('test') {

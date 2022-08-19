@@ -32,7 +32,7 @@ public class OrderController {
 		model.addAttribute("orderList", myOrderServiceNew.getGoodsInfo(opd.getOrders()));
 		model.addAttribute("memberInfo", memberService.getMemberInfo(id));
 		
-		return "root.shop.shoporder";
+		return "shop/order";
 	}
 	
 	// 주문요청

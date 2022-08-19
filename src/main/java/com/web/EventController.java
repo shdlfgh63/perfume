@@ -18,11 +18,7 @@ public class EventController {
 	
 	@Autowired
 	private EventService eventService;
-	
-	@RequestMapping("test")
-	public String test(Model model) throws Exception {
-		return "root.event.test"; 
-	}
+
 	
 	@RequestMapping("event")
 	public String event(Model model) throws Exception {
@@ -35,7 +31,7 @@ public class EventController {
 		model.addAttribute("ingList", ingList);
 		model.addAttribute("winnerList", winnerList);
 //		
-		return "root.event.event";
+		return "event/event";
 	}	
 	
 	
@@ -46,7 +42,7 @@ public class EventController {
 		
 		model.addAttribute("event", event);
 		
-		return "root.event.detail";
+		return "event/detail";
 	}
 	
 	
