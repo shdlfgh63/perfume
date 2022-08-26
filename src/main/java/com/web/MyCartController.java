@@ -50,7 +50,7 @@ public class MyCartController {
 		
 		model.addAttribute("myCartInfo", mycartservice.getCartList(id));			
 		
-		return "mypage/mycart";
+		return "shop/cart";
 	}
 			
 	// 카트 목록삭제

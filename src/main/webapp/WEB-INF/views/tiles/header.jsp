@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@	taglib	prefix="c"		uri="http://java.sun.com/jsp/jstl/core" %>
+<%@	taglib	prefix="fmt"	uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div class="border-bottom">
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="height:120px">
@@ -46,12 +48,20 @@
 	  <div class="col-md-4" style="padding-top: 27px;">	
         <ul class="navbar-nav me-auto mb-2 mb-md-0 justify-content-md-center">
           <li class="nav-item my-icon">
-            <a class="nav-link" aria-current="page" href="/member/login">
-            	<i class="header-icon bi bi-person-circle" style="font-size: 25px; padding-right: 10px;"></i>
-            </a>
+            <c:if test="${sessionScope.member.id eq null}">
+                <a class="nav-link" aria-current="page" href="/member/login">
+                    <i class="header-icon bi bi-person-circle" style="font-size: 25px; padding-right: 10px;"></i>
+                </a>
+            </c:if>
+              <c:if test="${not empty sessionScope.member.id}">
+                  <a class="nav-link" aria-current="page" href="/myorder/${sessionScope.member.id}">
+                      <i class="header-icon bi bi-person-circle" style="font-size: 25px; padding-right: 10px;"></i>
+                  </a>
+              </c:if>
+
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/mypage/mycart" >
+            <a class="nav-link" aria-current="page" href="/mycart/id=${sessionScope.member.id}" >
 				<i class="header-icon bi bi-minecart" style="font-size: 25px;"></i>
 			</a>
           </li>

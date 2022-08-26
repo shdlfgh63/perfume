@@ -113,7 +113,7 @@
 		
 		
 		var params = {
-				user_id      : "${user_id}"
+				user_id      : "${sessionScope.member.id}"
               , product_id       : "${name}"
               , price : price
               

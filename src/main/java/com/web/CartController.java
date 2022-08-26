@@ -49,7 +49,7 @@ public class CartController {
 		
 		
 	}
-	@RequestMapping(value = "/cart/{id}",method = {RequestMethod.POST,RequestMethod.GET})
+	/*@RequestMapping(value = "/cart/${id}",method = {RequestMethod.POST,RequestMethod.GET})
 	public String cartPageGET(@PathVariable("id") String id, Model model) {
 		
 		List<CartVO> list = new ArrayList();
@@ -84,7 +84,7 @@ public class CartController {
 		System.out.println("장바구니 페이지 진입");		
 		return "shop/cart";
 	}
-	
+	*/
 	@ResponseBody
 	@RequestMapping(value = "/cart/delete", method=RequestMethod.POST)
 	public String cartDelete(@RequestParam("cart_id")int cart_id) {

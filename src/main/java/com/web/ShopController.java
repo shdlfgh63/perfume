@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.model.CartVO;
 import com.model.MemberVO;
 import com.model.PerfumeVO;
 import com.model.ReviewVO;
@@ -18,6 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @RequestMapping("/shop/")
@@ -158,6 +162,30 @@ public class ShopController {
 	}
 	
 	*/
+	@RequestMapping(value = "detail/cart",method = RequestMethod.POST)
+	@ResponseBody
+	public String payment(@RequestParam("user_id") String user_id, @RequestParam("product_id") String product_id, @RequestParam("price")String price){
+
+		List<CartVO> list =  new ArrayList<>();
+
+		CartVO cart = new CartVO();
+		cart.setId(user_id);
+		cart.setName(product_id);
+		cart.setImage(price);
+
+		cartservice.newAddCart(cart);
+
+
+		return "success";
+
+	}
+
+
+
+
+
+
+
 }
 
 

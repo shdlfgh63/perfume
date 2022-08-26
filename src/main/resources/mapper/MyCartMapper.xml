@@ -13,9 +13,9 @@
 
 <!-- 카트 목록 -->
 <select id="getCart" resultType="MyCartVO">
-select a.cart_id, a.member_id, a.product_id, a.product_count, 
-b.name, b.price, b.image from my_cart a LEFT OUTER JOIN product b on a.product_id = b.product_id
-where member_id = #{id}
+select a.cart_id, a.id, a.product_id, a.product_count,
+b.name, b.price, b.image from cart a LEFT OUTER JOIN product b on a.product_id = b.product_id
+where a.id = #{id}
 </select>
 
 	<!-- 카트 삭제 -->

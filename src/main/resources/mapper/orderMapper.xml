@@ -7,22 +7,25 @@
 
 <!-- 주문목록 조회 -->
 
-<!-- 
+
 <select id="selectOrderList" resultType="myOrderVO">
 	<![CDATA[
-		SELECT 
-		ORDER_ID AS orderId
-	,	ORDER_DATE AS orderDate
-	, 	NAME AS name
-	, 	PRODUCT_COUNT AS productCount 
-	, 	TOTAL_PRICE AS totalPrice
-	,	ID			AS	id
-	FROM MY_ORDER
-	where ID = #{id}
+	SELECT
+		a.ORDER_ID AS orderId
+		 ,	a.ORDER_DATE AS orderDate
+		 , 	a.NAME AS name
+		 , 	a.PRODUCT_COUNT AS productCount
+		 , 	a.TOTAL_PRICE AS totalPrice
+		 ,	  a.ID			AS	id
+	FROM MY_ORDER a, member b
+	where
+		1=1
+	    and a.id =b.id
+	    and a.ID = #{id}
 	]]>
 
 </select>
- -->
+
 
  
 <!--  
