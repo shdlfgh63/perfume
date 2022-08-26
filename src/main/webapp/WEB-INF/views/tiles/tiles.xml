@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="layout-tiles" template="/WEB-INF/views/tiles/layout.jsp">
+        <put-attribute name="title" value="Perfume Project"/>
+        <put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp"/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp"/>
+
+    </definition>
+
+    <definition name="*/*" extends="layout-tiles">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"/>
+    </definition>
+
+    <definition name="admin.*" extends="base.layout">
+
+    <put-attribute name="main" value="/WEB-INF/views/admin/tiles/layout.jsp"/>
+
+    <put-attribute name="one" value="/WEB-INF/views/admin/tiles/aside.jsp" cascade="true"/>
+
+    <put-attribute name="two" value="/WEB-INF/views/admin/{1}.jsp" cascade="true"/>
+
+</definition>
+
+</tiles-definitions>

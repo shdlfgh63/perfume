@@ -82,7 +82,7 @@ public class CartController {
 		model.addAttribute("total",total);
 		model.addAttribute("total_Price",total_Price);
 		System.out.println("장바구니 페이지 진입");		
-		return "/cart"; 
+		return "shop/cart";
 	}
 	
 	@ResponseBody
