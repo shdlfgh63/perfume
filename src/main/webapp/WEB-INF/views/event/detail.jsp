@@ -30,7 +30,7 @@
 		  </tbody>
 		  <caption>
 	
-			<img class="img-fluid col-md-12" src="${event.image}" alt="...">	
+			<img class="img-fluid col-md-12" src="/WEB-INF/${event.image}" alt="...">
 		  </caption>	
 		</table>
 	</div>
