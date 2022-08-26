@@ -38,14 +38,12 @@ public class MyCartServiceImpl implements MyCartService {
 	
 	@Override
 	public List<MyCartVO> getCartList(String id) {
+
+
 		
-		List<MyCartVO> mycart = mycartdao.getCart(id);
+
 		
-		for(MyCartVO vo : mycart) {
-			vo.initTotal();
-		}
-		
-		return mycart;
+		return mycartdao.getCartList(id);
 	}
 	
 	@Override

@@ -51,20 +51,7 @@
 				<div class="col">총금액</div>
 			</div>			
 
-			<!-- 추후에 사진첨부 할것... -->
-			<div class="row" style="border-bottom:1px solid lightgrey">
-				<div class="col-2">2022.04.14</div>
-				<div class="col-4">drop 01. 물기 머금은 장미</div>
-				<div class="col-3">1</div>
-				<div class="col-2">48,000원</div>
-				<div class="row">
-					<div class="col-8"></div>
-					<div class="col-4">
-					<button type="button" class="btn btn-outline-secondary btn-sm" onclick="">리뷰쓰기</button>
-					<button type="button" class="btn btn-outline-danger btn-sm">반품신청</button>
-					</div>
-				</div>	
-			</div>
+
 			
 
 

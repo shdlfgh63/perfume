@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.model.MemberVO;
 import com.model.MyOrderVO;
 import com.service.MyOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +35,11 @@ public class MyOrderController {
 
 	// 주문내역 삭제(반품처리)
 	@PostMapping("/deleteorder")
-	public String deleteOrder(MyOrderVO mov) throws Exception  {
+	public String deleteOrder(MyOrderVO mov, HttpSession session) throws Exception  {
 		
 		myOrderService.deleteOrder(mov.getOrderId());
-		
-		return "redirect:/myorder/" + mov.getId(); 
+
+		return "redirect:/myorder/" + session.getAttribute("id");
 	}
 	
 	

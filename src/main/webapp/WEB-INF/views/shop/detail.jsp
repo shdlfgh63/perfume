@@ -214,7 +214,7 @@
 						</c:forEach>
 					</div>
 					<div>
-						<a href="#" style="text-decoration: none; color: black;">
+						<a href="/shoporder/addOrder?name=${name}&price=${price}&id=${sessionScope.member.id}" style="text-decoration: none; color: black;">
 							<div class="border border-dark"
 								style="text-align: center; font-size: 20px; font-weight: bold; height: 50px; padding-top: 10px;">
 								바로 구매</div>

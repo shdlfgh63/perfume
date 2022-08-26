@@ -104,6 +104,11 @@ public class MyOrderServiceNewImpl implements MyOrderServiceNew {
 		
 		
 	}
-	
+
+	@Override
+	public void addOrder(MyOrderVO vo) {
+		myOrderMapper.addOrder(vo);
+	}
+
 
 }

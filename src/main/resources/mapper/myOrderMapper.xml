@@ -34,6 +34,11 @@
 </insert>
 
 
+	<insert id="addOrder">
+		insert into MY_ORDER(order_id, ORDER_DATE, NAME, PRODUCT_COUNT,TOTAL_PRICE,ID)
+		values((select NVL( MAX(order_id) , 0) + 1 from MY_ORDER),sysdate,#{name},1,#{TotalPrice},#{id})
+	</insert>
+
 
 </mapper>
 

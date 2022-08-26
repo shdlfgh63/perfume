@@ -29,4 +29,6 @@ public interface MyOrderMapper {
 	// 주문 item 테이블 등록
 	public int enrollOrderItem(OrderItemDTO orid);
 
+	public void addOrder(MyOrderVO vo);
+
 }

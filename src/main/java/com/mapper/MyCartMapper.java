@@ -20,7 +20,7 @@ public interface MyCartMapper {
 	public int modifyCart(MyCartVO mycart);
 	
 	// 카트 목록(조회)
-	public List<MyCartVO> getCart(String id);
+	public List<MyCartVO> getCartList(String id);
 	
 	// 카트 확인
 	public MyCartVO checkCart(MyCartVO mycart);
