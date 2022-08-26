@@ -15,7 +15,7 @@
 		<br><br>		
 	</h4>	
 		
-	<div align="center">			
+	<div align="center">
 		  	<p style="text-align:right;"><small>&nbsp; 작성일: ${event.regdate} &nbsp;&nbsp;&nbsp; 조회수: ${event.hit}</small></p>
 		<table class="table table-bordered">
 		  <tbody>
@@ -30,7 +30,7 @@
 		  </tbody>
 		  <caption>
 	
-			<img class="img-fluid col-md-12" src="/WEB-INF/${event.image}" alt="...">
+			<img class="img-fluid col-md-12" src="${event.image}" alt="...">
 		  </caption>	
 		</table>
 	</div>
