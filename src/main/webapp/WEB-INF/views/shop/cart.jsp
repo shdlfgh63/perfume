@@ -41,8 +41,35 @@
 $(document).ready(function() {
 
 
-	
-	
+	$("#cbx_chkAll").click(function() {
+		if($("#cbx_chkAll").is(":checked")) $("input[name=chk]").prop("checked", true);
+		else $("input[name=chk]").prop("checked", false);
+	});
+
+	$(function(){
+
+		$('input:checkbox[name=chk]').on('click', function(){
+			//값들의 갯수 -> 배열 길이를 지정
+			var grpl = $('input:checkbox[name=chk]:checked').length;
+			console.log(grpl);
+			//배열 생성
+			var grparr = [];
+			var result=0;
+
+			//배열에 값 주입
+			for(var i=0; i<grpl; i++){
+				grparr[i] = $('input:checkbox[name=chk]:checked:eq('+i+')').val();
+				result += Number(grparr[i]);
+			}
+			$('#tt_price').text(result+'원');
+			$('#result_price').text(Number(result+3000)+'원');
+			$('#payment').attr("href", "${pageContext.request.contextPath}/order/${member.id}?price="+Number(result+3000));
+
+
+
+
+		});
+	});
 	
 	
 	$(".btn_delete").click(function() {
@@ -55,12 +82,20 @@ $(document).ready(function() {
 	        success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
 	            // 응답코드 > 0000
 	            alert("삭제 되었습니다");
+				location.reload();
 	        },
 	        error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
 	            alert("통신 실패.")
 	        }
 	    });
 		location.reload();
+	});
+	$("#payment").click(function (){
+		var check = $('input:checkbox[name=chk]:checked').length;
+		if (check == 0){
+			alert("상품을 하나 이상 체크 해주세요");
+			return false;
+		}
 	});
 	
 	
@@ -78,6 +113,7 @@ $(document).ready(function() {
 	        success : function(res){ // 비동기통신의 성공일경우 success콜백으로 들어옵니다. 'res'는 응답받은 데이터이다.
 	            // 응답코드 > 0000
 	            alert("변경 되었습니다");
+				location.reload();
 	        },
 	        error : function(XMLHttpRequest, textStatus, errorThrown){ // 비동기 통신이 실패할경우 error 콜백으로 들어옵니다.
 	            alert("통신 실패.")
@@ -100,7 +136,7 @@ $(document).ready(function() {
 <h1 align="center">Cart.</h1><br><br>
 	<!-- 체크박스 전체 여부 -->
 	<div class="all_check_input_div">
-		<input type="checkbox" class="all_check_input input_size_20" id="cbx_chkAll" checked="checked"/><span class="all_chcek_span">전체선택/해제</span>
+		<input type="checkbox" class="all_check_input input_size_20" id="cbx_chkAll"/><span class="all_chcek_span">전체선택/해제</span>
 	</div>
 
        
@@ -114,10 +150,10 @@ $(document).ready(function() {
       <th>&nbsp;</th>
    </tr>
      <!-- list출력하기 위해 forEach문을 사용해 ci라는 변수에 넣는다. -->
-    <c:forEach var="ci" items="${cartInfo}">
+    <c:forEach var="ci" items="${myCartInfo}">
     <tr align="center">
          <td class ="cart_info_td">
-             <input type="checkbox" class="individual_cart_checkbox input_size_20" name="chk" checked="checked">
+             <input type="checkbox" class="individual_cart_checkbox input_size_20" name="chk" value="${ci.price * ci.product_count}">
       		 <input type="hidden" class="individual_Price_input" value="${ci.price }">
 			 <input type="hidden" class="individual_count_input" value="${ci.product_count}">
 			 <input type="hidden" class="individual_totalPrice_input" value="${ci.price * ci.product_count}">
@@ -167,30 +203,19 @@ $(document).ready(function() {
 	<tr>
 		<td align="center"><span class="totalCount_span"></span>${total }개</td>
 		<td><span class=""></span></td>
-		<td><span class="totalPrice_span"></span><fmt:formatNumber value="${total_Price}"
-                 pattern="#,###,### 원" /></td>
+		<td id="tt_price"><span class="totalPrice_span"></span></td>
 		<td><span class="glyphicon glyphicon-plus"></span></td>
-		<td><span class="delivery_price"></span>3,000원</td>
+		<td><span class="delivery_price"></span>3000원</td>
 		<td><span class="glyphicon glyphicon-arrow-right"></span></td>
-		<td id="price"><span class="finalTotalPrice_span"></span><fmt:formatNumber value="${total_Price+3000}"
-                 pattern="#,###,### 원" /></td>
+		<td id="result_price"><span class="finalTotalPrice_span">0원</span></td>
 	</tr>
 	
 </table>
-<p><a href="${pageContext.request.contextPath}/order/${member.id}"><button type="button" class="btn btn-primary btn-block">주문하기</button></a></p>
+<p><a id="payment" href="${pageContext.request.contextPath}/order/${member.id}"><button type="button" class="btn btn-primary btn-block">주문하기</button></a></p>
 
-	<!-- 수량 조정 form -->
-	<form action="/cart/update" method="post" class="quantity_update_form">
-		<input type="hidden" name="cart_id" class="update_cart_id">
-		<input type="hidden" name="product_count" class="update_product_count">
-		<input type="hidden" name="id" value="${member.id}">
-	</form>	
+
 	
-	<!-- 삭제 form -->
-	<form action="/cart/delete" method="post" class="quantity_delete_form">
-		<input type="submit" name="cart_id" class="delete_cart_id" value="${cart.cart_id}">
-		<input type="hidden" name="id" value="${member.id}">
-	</form>
+
 </div> 
 
 

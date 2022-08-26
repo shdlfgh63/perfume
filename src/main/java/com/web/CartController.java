@@ -106,10 +106,11 @@ public class CartController {
 	
 
 	@GetMapping("/order/{id}")
-	public String orderPageGET(@PathVariable("id") String id, Model model) {
+	public String orderPageGET(@PathVariable("id") String id,@RequestParam("price") int price, Model model) {
 		
 		
 		model.addAttribute("cartInfo", cartService.getCart(id));
+		model.addAttribute("price", price);
 		System.out.println("주문페이지 진입");
 		return "shop/order";
 	}

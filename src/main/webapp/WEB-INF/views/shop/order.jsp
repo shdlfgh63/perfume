@@ -54,40 +54,13 @@
       <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Your cart</span>
-          <span class="badge bg-primary rounded-pill">3</span>
+          <span class="badge bg-primary rounded-pill"></span>
         </h4>
         <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">첫번째 상품명</h6>
-              <small class="text-muted">상품수량 : 2</small>
-            </div>
-            <span class="text-muted">12000원</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">두번째 상품명</h6>
-              <small class="text-muted">상품수량 : 4</small>
-            </div>
-            <span class="text-muted">40000원</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">세번째 상품명</h6>
-              <small class="text-muted">상품수량 : 2</small>
-            </div>
-            <span class="text-muted">30000원</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between bg-light">
-            <div class="text-success">
-              <h6 class="my-0">배송비</h6>
-              <small>30000원 이상결제시 무료</small>
-            </div>
-            <span class="text-success">무료</span>
-          </li>
+
           <li class="list-group-item d-flex justify-content-between">
             <span>합 계 (원)</span>
-            <strong>55000원</strong>
+            <strong>${price}원</strong>
           </li>
         </ul>
 
@@ -226,7 +199,7 @@
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit">55000원 결제하기</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit">${price}원 결제하기</button>
         </form>
       </div>
     </div>

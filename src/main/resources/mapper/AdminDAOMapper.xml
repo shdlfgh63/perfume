@@ -126,7 +126,7 @@
 		<![CDATA[
 			INSERT INTO event 
 			VALUES (
-						board_seq.nextval, 
+						   (select NVL( MAX(id) , 0) + 1 from event),
 						#{startdate}, 
 						#{enddate}, 
 						#{title}, 

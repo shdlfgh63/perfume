@@ -61,7 +61,7 @@
 
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/mycart/id=${sessionScope.member.id}" >
+            <a class="nav-link" aria-current="page" href="/mycart/${sessionScope.member.id}" >
 				<i class="header-icon bi bi-minecart" style="font-size: 25px;"></i>
 			</a>
           </li>

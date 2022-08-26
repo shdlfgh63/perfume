@@ -41,9 +41,9 @@ public class MyCartController {
 	}
 	
 	@RequestMapping("/mycart/{id}")
-	public String myCartGET(@PathVariable("id") String id, Model model,HttpServletRequest request
-		  	,HttpServletResponse response) throws Exception {
-		List<MyCartVO> list = mycartservice.getCartList(id);
+	public String myCartGET(Model model,HttpServletRequest request
+		  	,HttpServletResponse response,HttpSession session) throws Exception {
+		List<MyCartVO> list = mycartservice.getCartList((String) session.getAttribute("id"));
 		model.addAttribute("myCartInfo", list);
 		
 		return "shop/cart";
