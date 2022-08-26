@@ -8,7 +8,7 @@
 
 
 
-<form action="/enrollreview" method="post">
+<form action="/review/enroll" method="post">
 	<div class="input_wrap">
 		<label>제품명</label>
 		<input name="name">

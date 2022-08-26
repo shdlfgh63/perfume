@@ -35,10 +35,7 @@
 		<div class="col-4" style="padding: 0 80px 0 20px">
 		<ul class="list-group list-group-flush" style="border-bottom:1px solid black">
    			<li class="list-group-item" ><a href="/myorder/${member.id}" id="mymenu">주문내역</a></li>
-  			<li class="list-group-item" ><a href="/mywish/${member.id}" id="mymenu">관심상품</a></li>
-  			<li class="list-group-item" ><a href="/myreview/${member.id}" id="mymenu">나의리뷰</a></li>
-  			<li class="list-group-item" ><a href="#" id="mymenu">나의문의</a></li>
-  			<li class="list-group-item" ><a href="#" id="mymenu">정보수정</a></li>
+  			<li class="list-group-item" ><a href="/myedit/${member.id}" id="mymenu">정보수정</a></li>
 		</ul>
 		</div>
 	<!-- 좌측 마이페이지 사이드메뉴 (End) -->	

@@ -21,8 +21,9 @@ public class ReviewController {
 		
 		// 리뷰 등록
 		@PostMapping("/enroll")
-		public void enrollReviewPOST(ReviewVO rvo) {
+		public String enrollReviewPOST(ReviewVO rvo) {
 			reviewService.enrollReview(rvo);
+			return "/mypage/reviewenroll";
 			
 		}
 		

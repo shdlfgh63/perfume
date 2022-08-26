@@ -375,19 +375,19 @@
      <div class="border-bottom"></div>
      </div>
      
-     <!-- 
+     <!--
      <div class="review_not_div">
-     
+
      </div>
      <ul class="review_content_ul">
-       
+
      	<li>
      		<div class="comment_wrap">
      			<div class="review_top">
     				<span class="id_span">admin</span>
     				<span class="date_span">2022-01-01</span>
     				<span class="rating_span">평점 : <span class="rating_value_span">3.5</span>점</span>
-    				<a class="update_review_btn">수정</a><a class="update_review_btn">삭제</a>	
+    				<a class="update_review_btn">수정</a><a class="update_review_btn">삭제</a>
      			</div>
      			<div class="review_bottom">
      				<div class="review_bottom_txt">
@@ -396,12 +396,12 @@
      			</div>
      		</div>
      	</li>
-     
-     </ul>   
-      
+
+     </ul>
+
      <div class="review_pageInfo_div">
  		<ul class="pageMaker">
- 		
+
 			<li class="pageMaker_btn prev">
 				<a>이전</a>
 			</li>
@@ -413,14 +413,14 @@
 			</li>
 			<li class="pageMaker_btn active">
 				<a>3</a>
-			</li>													
+			</li>
 			<li class="pageMaker_btn next">
 				<a>다음</a>
 			</li>
-	
-		</ul>    
+
+		</ul>
      </div>
-     -->   
+     -->
     
     <!-- 리뷰 목록 -->
     <div class="container">	 		
@@ -440,7 +440,7 @@
   
 </div>
 			
-				
+<!--
 <script>
 
 /* 리뷰쓰기 */
@@ -452,7 +452,7 @@ $("#review_button").on("click", function(e){
 	const product_id = '${product_id}';
 	
 	
-	let popUrl = "/shop/reviewEnroll/" + id + "?product_id=" + product_id;
+	let popUrl = "/review/enroll";
 	console.log(popUrl);
 	let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes";
 	
@@ -491,7 +491,7 @@ $(".hit").on("click", function(e){
 });
 
 </script>
-
+-->
 
 <script>
 
