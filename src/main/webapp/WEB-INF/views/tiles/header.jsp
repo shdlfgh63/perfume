@@ -48,7 +48,7 @@
 	  <div class="col-md-4" style="padding-top: 27px;">	
         <ul class="navbar-nav me-auto mb-2 mb-md-0 justify-content-md-center">
           <li class="nav-item my-icon">
-            <c:if test="${sessionScope.member.id eq null}">
+              <c:if test="${sessionScope.member.id eq null}">
                 <a class="nav-link" aria-current="page" href="/member/login">
                     <i class="header-icon bi bi-person-circle" style="font-size: 25px; padding-right: 10px;"></i>
                 </a>
@@ -61,9 +61,11 @@
 
           </li>
           <li class="nav-item">
+              <c:if test="${not empty sessionScope.member.id}">
             <a class="nav-link" aria-current="page" href="/mycart/${sessionScope.member.id}" >
 				<i class="header-icon bi bi-minecart" style="font-size: 25px;"></i>
 			</a>
+              </c:if>
           </li>
         </ul>
       </div>
