@@ -6,6 +6,7 @@ import com.model.MyCartVO;
 import com.model.PerfumeVO;
 import com.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -74,18 +75,22 @@ public class CrudController {
     /*상품 수정*/
 
     @GetMapping("/updateGoods")
-    public String updateGoods(HttpServletRequest req, Model model,PerfumeVO perfumeVO) {
+    public String updateGoods(@RequestParam(value="product_id",required = false)int product_id, HttpServletRequest req, Model model) {
         // 관리자 로그인 체크
         HttpSession session = req.getSession();
         if (session.getAttribute("id") == null && (Integer) session.getAttribute("adminCk") == 0) {
             return "/perfume/home";
         }
-        System.out.println("perfumeVO = " + perfumeVO);
+        model.addAttribute("product_id", product_id);
+
         return "/crud/modify";
     }
 
     @PostMapping("/update")
-    public String update(){
+    public String update(@RequestParam("product_id")int product_id,PerfumeVO perfumeVO,Model model)throws Exception{
+
+        perfumeVO.setProduct_id(product_id);
+        crudService.updateGoods(perfumeVO);
 
         return "/shop/40ml";
     }

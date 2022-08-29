@@ -134,12 +134,17 @@ public class ShopController {
 		//가격 값만 따로 넘겨줘서  price 3개로나눔(PerfumeVO에 price2 price3 추가)
 		model.addAttribute("product_id",list.get(0).getProduct_id());
 		model.addAttribute("name",list.get(0).getName());
+		model.addAttribute("brand",list.get(0).getBrand());
+		model.addAttribute("source1",list.get(0).getSource1());
+		model.addAttribute("source1",list.get(0).getSource2());
+		model.addAttribute("source1",list.get(0).getSource3());
 		model.addAttribute("price", list.get(0).getPrice());
 		model.addAttribute("price2", list.get(0).getPrice2());
 		model.addAttribute("price3", list.get(0).getPrice3());
 		
 		model.addAttribute("image", list.get(0).getImage());
-		
+
+
 		//model.addAttribute("user_id",vo.getId());
 		/*
 		// 리뷰목록

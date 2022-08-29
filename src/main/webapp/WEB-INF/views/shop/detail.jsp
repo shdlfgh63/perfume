@@ -269,16 +269,20 @@
 							</c:if>
 
 							<c:if test="${sessionScope.member.adminCk eq 1}">
-								<form id="enrollForm2" name="updateGoods" action="/crud/update" class="form-horizontal" method="post"
+								<form id="enrollForm2" name="updateGoods" action="/crud/updateGoods" class="form-horizontal" method="GET"
 									  enctype="multipart/form-data">
 
 									<div class="form-group row">
 										<div class="col-sm-offset-2 col-sm-10">
-											<button type="button" class="btn btn-warning" onclick="location.href='http://localhost:8081/crud/updateGoods'">수정<input id="enrollBtn2"  type="hidden" name="n" value="<c:forEach var="item" items="${list}" >${item.product_id} </c:forEach>"></button>
+											<input  type="hidden" name="product_id" value="<c:forEach var="item" items="${list}" >${item.product_id} </c:forEach>">
+
+											<button id="enrollBtn2" type="button" class="btn btn-warning" onclick="location.href='http://localhost:8081/crud/updateGoods'">수정</button>
 										</div>
 									</div>
 								</form>
 							</c:if>
+
+
 						</div>
 						<div style="padding-left: 40px; padding-top: 10px;">
 							<button class="hit" style="background-color: white; border: 0; outline: 0;"><i class="bi bi-heart" style="font-size: 2rem;"></i></button>

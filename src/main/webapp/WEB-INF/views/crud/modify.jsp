@@ -34,6 +34,7 @@
             <label class="col-sm-2">상품 이름</label>
             <div class="com-sm-3">
                 <input type="text" id="name" name="name" class="form-control">
+                <input type="hidden"  name="product_id" value="${product_id}" class="form-control">
             </div>
         </div>
 
@@ -90,6 +91,7 @@
         <div class="form-group row">
             <div class="col-sm-offset-2 col-sm-10">
                 <input id="enrollBtn" type="submit" class="btn btn-primary" value="등록">
+
             </div>
         </div>
 
