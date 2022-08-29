@@ -5,11 +5,11 @@
 
 	<insert id="regGoods" parameterType="PerfumeVO">
 		<![CDATA[
-			INSERT INTO product 
+			INSERT INTO product(PRODUCT_ID,NAME,BRAND,PRICE,SOURCE1,SOURCE2,SOURCE3,IMAGE,PRICE2,PRICE3)
 			VALUES (
-						product_seq.nextval,
+					    (select NVL( MAX(PRODUCT_ID) , 0) + 1 from product),
 						#{name}, 
-						#{brand}, 
+						#{brand},
 						#{price},
 						#{source1},
 						#{source2},

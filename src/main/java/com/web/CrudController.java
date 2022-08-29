@@ -8,14 +8,16 @@ import com.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.Attributes;
@@ -23,7 +25,8 @@ import java.util.jar.Attributes;
 @Controller
 @RequestMapping("/crud")
 public class CrudController {
-
+    @Autowired
+    private ServletContext ctx;
     @Autowired
     private CrudService crudService;
 
@@ -36,21 +39,22 @@ public class CrudController {
         return "/crud/crud";
     }
     @PostMapping("/reqGoodsAdd")
-    public String reqGoods(PerfumeVO perfumeVO, RedirectAttributes red) throws Exception {
+    public String reqGoods(PerfumeVO perfumeVO, RedirectAttributes red,HttpServletRequest req,@RequestParam("imgFile") MultipartFile file) throws Exception {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String webPath = "resources/img/customer";
+        String realPath = ctx.getRealPath(webPath);
 
+        File savePath = new File(realPath);
+        if (!savePath.exists()) {
+            savePath.mkdirs();
+        }
+
+        realPath += File.separator +file.getOriginalFilename()+sdf.format(timestamp);
+        File saveFile = new File(realPath);
+        file.transferTo(saveFile);
+        perfumeVO.setImage(realPath);
         crudService.regGoods(perfumeVO);
-
-        red.addFlashAttribute("name", perfumeVO.getName());
-        red.addFlashAttribute("brand", perfumeVO.getBrand());
-        red.addFlashAttribute("price", perfumeVO.getPrice());
-        red.addFlashAttribute("price2", perfumeVO.getPrice2());
-        red.addFlashAttribute("price3", perfumeVO.getPrice3());
-        red.addFlashAttribute("source1", perfumeVO.getSource1());
-        red.addFlashAttribute("source2", perfumeVO.getSource2());
-        red.addFlashAttribute("source3", perfumeVO.getSource3());
-        red.addFlashAttribute("image", perfumeVO.getImage());
-
-
        return "/crud/crud";
     }
 

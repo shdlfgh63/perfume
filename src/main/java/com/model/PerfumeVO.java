@@ -151,7 +151,8 @@ public class PerfumeVO {
 				 + ", ImgFile=" + ImgFile + "]";
 	}
 
-	
-	
+
+    public void setImgFile(Object image) {
+    }
 }
 
