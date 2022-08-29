@@ -15,6 +15,8 @@ public class PerfumeVO {
 	private int Price2;
 	private int Price3;
 	private MultipartFile ImgFile;
+
+
 	
 	public PerfumeVO(){
 		
@@ -46,6 +48,7 @@ public class PerfumeVO {
 		Source1 = source1;
 		Source2 = source2;
 		Source3 = source3;
+
 		ImgFile = imgFile;
 		
 	}

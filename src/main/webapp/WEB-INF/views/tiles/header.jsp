@@ -59,6 +59,12 @@
                   </a>
               </c:if>
 
+              <c:if test="${sessionScope.member.adminCk eq 1}">
+                  <a class="nav-link" aria-current="page" href="/crud/regGoods">
+                      <i class="bi bi-app" style="font-size: 25px; padding-right: 10px;"></i>
+                  </a>
+              </c:if>
+
           </li>
           <li class="nav-item">
               <c:if test="${not empty sessionScope.member.id}">
