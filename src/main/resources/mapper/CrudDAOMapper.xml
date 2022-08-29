@@ -29,7 +29,7 @@
 
 	<update id="updateGoods" parameterType="PerfumeVO">
 		<![CDATA[
-			UPDATE product SET 
+			UPDATE product SET
 				name = #{name},
 				brand = #{brand}, 
 				source1 = #{source1}, 
@@ -38,7 +38,7 @@
 				price = #{price},
 				price2 = #{price2},
 				price3 = #{price3} 
-			WHERE product_id = ${productId}
+			WHERE product_id = ${product_id}
 		]]>
 	</update>
 

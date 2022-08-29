@@ -61,6 +61,31 @@
 }
 
 </style>
+
+	<script>
+		$(document).ready(function(){
+			/* 상품 삭제 버튼 */
+			$("#enrollBtn").on("click",function(e){
+
+				e.preventDefault();
+
+				$("#enrollForm").submit();
+			});
+		});
+	</script>
+
+	<script>
+		$(document).ready(function(){
+			/* 상품 수정 버튼 */
+			$("#enrollBtn2").on("click",function(e){
+
+				e.preventDefault();
+
+				$("#enrollForm2").submit();
+			});
+		});
+	</script>
+
 <script>
 
 
@@ -173,7 +198,7 @@
 						<strong><c:forEach var="item" items="${list}" >${item.name} </c:forEach></strong>
 										
 					</h4>
-					<div class="produc_price">
+					<div class="product_price">
 						<c:forEach var="item" items="${list}" >
 							<h6 style="padding-left: 310px;">
 								<strong><fmt:formatNumber value="${item.price}"
@@ -229,10 +254,31 @@
 						<button onclick="payment()" type="button" class="addCart_btn" style="text-decoration: none; color: white; height:50px; width: 350px; background-color: black; font-size: 18px; font-weight: bold;">
 							장바구니
 							</button>
-						
-						
-						
-							
+
+							<c:if test="${sessionScope.member.adminCk eq 1}">
+								<form id="enrollForm" name="regGoods" action="/crud/deleteGoods" class="form-horizontal" method="post"
+									  enctype="multipart/form-data">
+
+									<div class="form-group row">
+										<div class="col-sm-offset-2 col-sm-10">
+											<input id="enrollBtn" type="submit" class="btn btn-danger" value="삭제">
+											<input type="hidden" name="n" value="<c:forEach var="item" items="${list}" >${item.product_id} </c:forEach>">
+										</div>
+									</div>
+								</form>
+							</c:if>
+
+							<c:if test="${sessionScope.member.adminCk eq 1}">
+								<form id="enrollForm2" name="updateGoods" action="/crud/update" class="form-horizontal" method="post"
+									  enctype="multipart/form-data">
+
+									<div class="form-group row">
+										<div class="col-sm-offset-2 col-sm-10">
+											<button type="button" class="btn btn-warning" onclick="location.href='http://localhost:8081/crud/updateGoods'">수정<input id="enrollBtn2"  type="hidden" name="n" value="<c:forEach var="item" items="${list}" >${item.product_id} </c:forEach>"></button>
+										</div>
+									</div>
+								</form>
+							</c:if>
 						</div>
 						<div style="padding-left: 40px; padding-top: 10px;">
 							<button class="hit" style="background-color: white; border: 0; outline: 0;"><i class="bi bi-heart" style="font-size: 2rem;"></i></button>

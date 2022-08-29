@@ -30,16 +30,18 @@ public class CrudController {
     @Autowired
     private CrudService crudService;
 
-    @GetMapping ("/regGoods")
-    public String regGoods(HttpServletRequest req,Model model) {
+    @GetMapping("/regGoods")
+    public String regGoods(HttpServletRequest req, Model model) {
         // 관리자 로그인 체크
         HttpSession session = req.getSession();
-        if(session.getAttribute("id") == null && (Integer)session.getAttribute("adminCk") == 0)
-        { return "/perfume/home";}
+        if (session.getAttribute("id") == null && (Integer) session.getAttribute("adminCk") == 0) {
+            return "/perfume/home";
+        }
         return "/crud/crud";
     }
-    @PostMapping("/reqGoodsAdd")
-    public String reqGoods(PerfumeVO perfumeVO, RedirectAttributes red,HttpServletRequest req,@RequestParam("imgFile") MultipartFile file) throws Exception {
+
+    @PostMapping("/regGoodsAdd")
+    public String reqGoods(PerfumeVO perfumeVO, RedirectAttributes red, HttpServletRequest req, @RequestParam("imgFile") MultipartFile file) throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String webPath = "resources/img/customer";
@@ -50,12 +52,45 @@ public class CrudController {
             savePath.mkdirs();
         }
 
-        realPath += File.separator +file.getOriginalFilename()+sdf.format(timestamp);
+        realPath += File.separator + sdf.format(timestamp) + "_" + file.getOriginalFilename();
         File saveFile = new File(realPath);
         file.transferTo(saveFile);
         perfumeVO.setImage(realPath);
         crudService.regGoods(perfumeVO);
-       return "/crud/crud";
+        return "/crud/crud";
     }
+
+    /*상품 삭제*/
+    @PostMapping("/deleteGoods")
+    public String deleteGoods(@RequestParam("n") int product_id) throws Exception {
+
+        crudService.deleteGoods(product_id);
+
+        return "redirect:/shop/40ml";
+    }
+
+
+
+    /*상품 수정*/
+
+    @GetMapping("/updateGoods")
+    public String updateGoods(HttpServletRequest req, Model model,PerfumeVO perfumeVO) {
+        // 관리자 로그인 체크
+        HttpSession session = req.getSession();
+        if (session.getAttribute("id") == null && (Integer) session.getAttribute("adminCk") == 0) {
+            return "/perfume/home";
+        }
+        System.out.println("perfumeVO = " + perfumeVO);
+        return "/crud/modify";
+    }
+
+    @PostMapping("/update")
+    public String update(){
+
+        return "/shop/40ml";
+    }
+
+
+
 
 }

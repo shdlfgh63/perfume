@@ -19,8 +19,8 @@ public class CrudServiceImpl implements CrudService {
     }
 
     @Override
-    public void deleteGoods(PerfumeVO perfumeVO) throws Exception{
-        crudDAO.deleteGoods(perfumeVO);
+    public void deleteGoods(int product_id) throws Exception{
+        crudDAO.deleteGoods(product_id);
     }
 
     @Override

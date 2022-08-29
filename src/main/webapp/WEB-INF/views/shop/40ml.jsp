@@ -65,8 +65,21 @@
   margin-bottom: 100px;
 }
     </style>
-  
-  
+
+      <script>
+          $(document).ready(function(){
+              /* 상품 등록 버튼 */
+              $("#enrollBtn").on("click",function(e){
+
+                  e.preventDefault();
+
+                  $("#enrollForm").submit();
+
+              });
+
+          });
+
+      </script>
   
   </head>
   <body>
@@ -120,6 +133,8 @@
 				</div></a>
 	   
 			</div>
+
+
 			 </c:forEach>
 		</div>
 	</div>

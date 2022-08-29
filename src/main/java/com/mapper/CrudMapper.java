@@ -11,7 +11,7 @@ public interface CrudMapper {
 
    public void regGoods(PerfumeVO perfumeVO);
 
-   public void deleteGoods(PerfumeVO perfumeVO);
+   public void deleteGoods(int product_id);
 
    public void updateGoods(PerfumeVO perfumeVO);
 

@@ -9,24 +9,25 @@
     <script type="text/javascript" src="./resources/js/validation.js"></script>
 
 
-    <title>상품 등록</title>
+    <title>상품 수정</title>
 </head>
+
+
 
 <body>
 
 <div class="jumbotron">
     <div class="container">
         <h1 class="display-3">
-            상품 등록
+            상품 수정
         </h1>
     </div>
 </div>
 
 <div class="container">
 
-    <form id="enrollForm" name="regGoods" action="/crud/regGoodsAdd" class="form-horizontal" method="post"
+    <form id="enrollForm" name="updateGoods" action="/crud/update" class="form-horizontal" method="post"
           enctype="multipart/form-data">
-
 
 
         <div class="form-group row">
@@ -85,14 +86,6 @@
             </div>
         </div>
 
-
-        <div class="form-group row">
-            <label class="col-sm-2">상품 이미지</label>
-            <div>
-              <!--  <input type="file" name="file" class="form-control"> -->
-                <input type="file" name="imgFile" class="form-control">
-            </div>
-        </div>
 
         <div class="form-group row">
             <div class="col-sm-offset-2 col-sm-10">
